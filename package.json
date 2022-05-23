@@ -18,6 +18,8 @@
     },
     "homepage": "https://github.com/ilantimerman/social-network-api#readme",
     "dependencies": {
+        "express": "^4.18.1",
+        "mongoose": "^6.3.4",
         "node": "^17.7.2"
     }
 }

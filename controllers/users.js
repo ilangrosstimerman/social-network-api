@@ -2,9 +2,10 @@ const Users = require('../models/users');
 const Reactions = require('../models/reactions');
 const Thoughts = require('../models/thoughts');
 const userCon = {
+
     getAll(req, res) {
         Users.find({})
-            .then(dbData => res.jsaon(dbData))
+            .then(dbData => res.json(dbData))
             .catch(err => {
                 console.log(err);
                 res.sendStatus(400);
@@ -42,7 +43,6 @@ const userCon = {
             .then(dbData => res.json(dbData))
             .catch(err => res.json(err));
     },
-
     postFriend({ params }, res) {
         Users.findOneAndUpdate({ _id: params.id},
             { $ADDtOsET: {friends: params.friendId} },
@@ -57,7 +57,6 @@ const userCon = {
         })
         .catch(err => res.json(err));    
     },
-
     deleteFriend({ params }, res) {
         Users.findOneAndUpdate({ _id: params.id},
             { $pull: {friends: params.friendId} },
@@ -66,7 +65,5 @@ const userCon = {
         .then(dbData => res.json(dbData))
         .catch(err => res.json(err));    
     }
-
 };
-
 module.exports = userCon;
